@@ -4,6 +4,3 @@ httpx[http2]
 async-lru
 meval
 TgCrypto
-pyrogram
-tgcrypto
-flask
