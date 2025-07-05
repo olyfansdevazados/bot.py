@@ -1,33 +1,14 @@
 import asyncio
-import os
-
 from pyrogram import Client, idle
 from pyrogram.session import Session
 from pyrogram.enums import ParseMode
-
 from config import API_HASH, API_ID, BOT_TOKEN, WORKERS
 from database import db, save
-
-# Remove os arquivos de sessão se existirem
-session_files = ["bot.session", "bot.session-shm", "bot.session-wal"]
-for file in session_files:
-    if os.path.exists(file):
-        os.remove(file)
-
 from keep_alive import keep_alive
-import telebot
 
-keep_alive()
+keep_alive()  # Serve pro Render ver que a porta tá viva
 
-bot = telebot.TeleBot("7998145772:AAHZj8nDAxneu_7_8h42SHd9VxIvvKj5Tss")
-
-@bot.message_handler(commands=['start'])
-def start(message):
-    bot.send_message(message.chat.id, "Bot tá on, fela!")
-
-bot.polling()
-
-# Inicializa o cliente.
+# Inicializa o cliente
 client = Client(
     "bot",
     bot_token=BOT_TOKEN,
@@ -38,9 +19,8 @@ client = Client(
     plugins={"root": "plugins"},
 )
 
-# Desativa a mensagem do Pyrogram no início.
+# Desativa a mensagem do Pyrogram
 Session.notice_displayed = True
-
 
 async def main():
     await client.start()
@@ -52,7 +32,6 @@ async def main():
     await client.stop()
     save()
     db.close()
-
 
 loop = asyncio.get_event_loop()
 
