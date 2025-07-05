@@ -4,5 +4,6 @@ httpx[http2]
 async-lru
 meval
 TgCrypto
-pyTelegramBotAPI
+pyrogram
+tgcrypto
 flask
