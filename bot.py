@@ -19,7 +19,7 @@ import telebot
 
 keep_alive()
 
-bot = telebot.TeleBot("TEU_TOKEN_DO_BOT")
+bot = telebot.TeleBot("7998145772:AAHZj8nDAxneu_7_8h42SHd9VxIvvKj5Tss")
 
 @bot.message_handler(commands=['start'])
 def start(message):
