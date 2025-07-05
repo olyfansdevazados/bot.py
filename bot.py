@@ -14,6 +14,19 @@ for file in session_files:
     if os.path.exists(file):
         os.remove(file)
 
+from keep_alive import keep_alive
+import telebot
+
+keep_alive()
+
+bot = telebot.TeleBot("TEU_TOKEN_DO_BOT")
+
+@bot.message_handler(commands=['start'])
+def start(message):
+    bot.send_message(message.chat.id, "Bot tá on, fela!")
+
+bot.polling()
+
 # Inicializa o cliente.
 client = Client(
     "bot",
